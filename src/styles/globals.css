@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+/* all the components */
+@source "../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}";
+
+/* only used components */
+/* @source "../../node_modules/@heroui/theme/dist/(button|snippet|code|input).{js,ts,jsx,tsx}"; */
+
+@plugin "../heroui";
+/* @config "../../tailwind.config.js"; */
