@@ -1,48 +1,97 @@
-import DefaultLayout from "@/layouts/default";
+import { Card, CardBody, CardHeader, Divider } from "@heroui/react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-const mockPosts = [
-	{
-		title: "Understanding React Hooks",
-		excerpt: "Learn the basics of React Hooks and how they simplify state management.",
-		readingTime: "5 min read",
-		date: "June 15, 2025",
-	},
-	{
-		title: "Tailwind CSS: A Beginner's Guide",
-		excerpt: "Discover how Tailwind CSS can speed up your development process.",
-		readingTime: "7 min read",
-		date: "June 10, 2025",
-	},
-	{
-		title: "Building Accessible Web Apps",
-		excerpt: "Tips and techniques for creating web applications that everyone can use.",
-		readingTime: "6 min read",
-		date: "June 5, 2025",
-	},
-];
+interface PostMeta {
+  title: string;
+  date: string;
+  readingTime: string;
+  excerpt?: string;
+  slug: string;
+}
 
 export default function IndexPage() {
-	return (
-		<DefaultLayout>
-			<section className="container mx-auto max-w-7xl px-6 py-8">
-				<h1 className="text-3xl font-bold mb-6">Latest Blog Posts</h1>
-				<div className="grid gap-6">
-					{mockPosts.map((post, index) => (
-						<div
-							key={index}
-							className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:shadow-md"
-						>
-							<h2 className="text-xl font-semibold mb-2">{post.title}</h2>
-							<p className="text-gray-600 dark:text-gray-400 mb-2">
-								{post.excerpt}
-							</p>
-							<div className="text-sm text-gray-500 dark:text-gray-300">
-								{post.readingTime} • {post.date}
-							</div>
-						</div>
-					))}
-				</div>
-			</section>
-		</DefaultLayout>
-	);
+  const [posts, setPosts] = useState<PostMeta[]>([]);
+
+  useEffect(() => {
+    async function fetchPosts() {
+      const modules = import.meta.glob("../posts/*.md", {
+        query: "?raw",
+        import: "default",
+      });
+
+      const loadedPosts: PostMeta[] = [];
+
+      for (const path in modules) {
+        const raw = await modules[path]();
+        const data = extractFrontmatter(raw as string);
+        const slug = path.split("/").pop()?.replace(/\.md$/, "") || "";
+
+        loadedPosts.push({
+          title: data.title || slug,
+          date: data.date || "Unknown date",
+          readingTime: data.readingTime || "? min read",
+          excerpt: data.excerpt || "No excerpt available.",
+          slug,
+        });
+      }
+
+      loadedPosts.sort((a, b) => (a.date < b.date ? 1 : -1));
+      setPosts(loadedPosts);
+    }
+
+    fetchPosts();
+  }, []);
+
+  return (
+    <section className="container mx-auto max-w-7xl px-6 py-8">
+      <h1 className="text-4xl font-extrabold mb-8 text-gray-900 dark:text-white">
+        Latest Blog Posts
+      </h1>
+      <div className="grid gap-8">
+        {posts.map((post, index) => (
+          <Link
+            key={index}
+            to={`/posts/${post.slug}`}
+            className="block"
+            style={{ textDecoration: "none" }}
+          >
+            <Card
+              className="border border-gray-300 dark:border-gray-700 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500"
+            >
+              <CardHeader className="text-2xl font-bold text-gray-800 dark:text-gray-100 p-4">
+                {post.title}
+              </CardHeader>
+              <Divider className="border-gray-300 dark:border-gray-700" />
+              <CardBody className="p-4">
+                <p className="text-gray-700 dark:text-gray-300 mb-4">
+                  {post.excerpt}
+                </p>
+                <div className="text-sm text-gray-600 dark:text-gray-400">
+                  {post.readingTime} • {post.date}
+                </div>
+              </CardBody>
+            </Card>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// 🧠 Custom frontmatter parser (YAML-like)
+function extractFrontmatter(raw: string): Record<string, string> {
+  const match = /^---\n([\s\S]+?)\n---/.exec(raw);
+  if (!match) return {};
+
+  const lines = match[1].split("\n");
+  const meta: Record<string, string> = {};
+
+  for (const line of lines) {
+    const [key, ...rest] = line.split(":");
+    if (!key || rest.length === 0) continue;
+    meta[key.trim()] = rest.join(":").trim();
+  }
+
+  return meta;
 }

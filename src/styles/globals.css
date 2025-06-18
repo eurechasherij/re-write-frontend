@@ -1,4 +1,119 @@
 @import 'tailwindcss';
+@plugin "@tailwindcss/typography";
 @plugin '../hero.ts';
 @source '../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
 @custom-variant dark (&:is(.dark *));
+
+/* Extend prose styles */
+@layer components {
+  .prose {
+    max-width: 65ch;
+    font-size: 1.125rem;
+    line-height: 1.75;
+    color: theme("colors.gray.800");
+
+    h1 {
+      font-size: 2.75rem;
+      font-weight: 800;
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 2rem;
+      line-height: 1.2;
+      color: theme("colors.gray.900");
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-top: 3rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin-top: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    ul, ol {
+      padding-left: 1.5rem;
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    a {
+      color: theme("colors.pink.600");
+      font-weight: 500;
+      text-decoration: underline;
+    }
+
+    blockquote {
+      font-style: italic;
+      border-left: 4px solid theme("colors.gray.300");
+      padding-left: 1rem;
+      color: theme("colors.gray.600");
+      margin: 2rem 0;
+    }
+
+    pre {
+      background-color: #0f172a;
+      padding: 1.25rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #f1f5f9;
+    }
+
+    code {
+      background-color: #1e293b;
+      color: #f472b6;
+      padding: 0.2em 0.4em;
+      border-radius: 0.25rem;
+      font-weight: 500;
+    }
+
+    img {
+      border-radius: 0.5rem;
+      margin: 1.5rem 0;
+    }
+  }
+
+  .dark .prose {
+    color: theme("colors.gray.100");
+
+    h1, h2, h3 {
+      color: theme("colors.white");
+    }
+
+    blockquote {
+      color: theme("colors.gray.400");
+      border-color: theme("colors.gray.600");
+    }
+
+    a {
+      color: theme("colors.pink.400");
+    }
+
+    code {
+      background-color: #334155;
+      color: #f9a8d4;
+    }
+
+    pre {
+      background-color: #1e293b;
+      color: #f1f5f9;
+    }
+  }
+}

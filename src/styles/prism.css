@@ -1,0 +1,57 @@
+/* Base container for code blocks */
+pre[class*="language-"] {
+  background-color: #0f172a;
+  color: #f1f5f9;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  white-space: pre;        /* ✅ preserve indentation */
+  word-wrap: normal;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Inline code */
+code[class*="language-"] {
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+  font-size: inherit;
+  white-space: inherit;
+}
+
+/* Prism tokens */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #64748b;
+}
+
+.token.punctuation {
+  color: #94a3b8;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol {
+  color: #f472b6;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string {
+  color: #34d399;
+}
+
+.token.operator,
+.token.entity,
+.token.url {
+  color: #60a5fa;
+}

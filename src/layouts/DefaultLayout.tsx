@@ -1,4 +1,4 @@
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@heroui/react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button } from "@heroui/react";
 import { useTheme } from "@heroui/use-theme";
 import { Sun, Moon } from "lucide-react";
 
@@ -21,23 +21,24 @@ export default function DefaultLayout({
         </NavbarBrand>
         <NavbarContent justify="end">
           <NavbarItem>
-            <a href="/" className="text-gray-600 dark:text-gray-300 hover:underline">
+            <Link href="/" className="text-gray-600 dark:text-gray-300 hover:underline">
               Home
-            </a>
+            </Link>
           </NavbarItem>
           <NavbarItem>
-            <a href="/about" className="text-gray-600 dark:text-gray-300 hover:underline">
+            <Link href="/about" className="text-gray-600 dark:text-gray-300 hover:underline">
               About
-            </a>
+            </Link>
           </NavbarItem>
           <NavbarItem>
-            <a href="/blog" className="text-gray-600 dark:text-gray-300 hover:underline">
+            <Link href="/blog" className="text-gray-600 dark:text-gray-300 hover:underline">
               Blog
-            </a>
+            </Link>
           </NavbarItem>
           <NavbarItem>
-            <button
-              onClick={toggleTheme}
+            <Button
+              onPress={toggleTheme}
+              isIconOnly
               className="ml-4 flex items-center justify-center p-2 rounded-full bg-gray-200 dark:bg-gray-700"
               aria-label="Toggle theme"
             >
@@ -46,17 +47,17 @@ export default function DefaultLayout({
               ) : (
                 <Moon className="text-blue-500" />
               )}
-            </button>
+            </Button>
           </NavbarItem>
         </NavbarContent>
       </Navbar>
-      <main className="container mx-auto max-w-7xl px-6 flex-grow py-8 prose dark:prose-dark">
+      <main className="container mx-auto max-w-7xl px-6 flex-grow py-8">
         {children}
       </main>
       <footer className="border-t border-gray-200 dark:border-gray-700 py-4">
         <div className="container mx-auto max-w-7xl px-6 text-center">
           <p className="text-sm text-gray-600 dark:text-gray-400">
-            © 2025 re-write. All rights reserved.
+            © 2025 rematcha.dev. All rights reserved.
           </p>
         </div>
       </footer>
