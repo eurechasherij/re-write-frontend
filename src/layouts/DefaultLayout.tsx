@@ -1,4 +1,11 @@
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button } from "@heroui/react";
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  Link,
+  Button,
+} from "@heroui/react";
 import { useTheme } from "@heroui/use-theme";
 import { Sun, Moon } from "lucide-react";
 
@@ -15,23 +22,40 @@ export default function DefaultLayout({
 
   return (
     <div className="relative flex flex-col min-h-screen bg-white dark:bg-gray-900">
-      <Navbar isBordered className="border-b border-gray-200 dark:border-gray-700">
+      <Navbar
+        isBordered
+        className="border-b border-gray-200 dark:border-gray-700"
+      >
         <NavbarBrand className="text-2xl font-bold text-gray-900 dark:text-white">
-          re-write
+          <Link
+            href="/"
+            className="text-2xl text-gray-900 dark:text-white hover:underline"
+          >
+            re-write
+          </Link>
         </NavbarBrand>
         <NavbarContent justify="end">
           <NavbarItem>
-            <Link href="/" className="text-gray-600 dark:text-gray-300 hover:underline">
+            <Link
+              href="/"
+              className="text-gray-600 dark:text-gray-300 hover:underline"
+            >
               Home
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link href="/about" className="text-gray-600 dark:text-gray-300 hover:underline">
+            <Link
+              href="/about"
+              className="text-gray-600 dark:text-gray-300 hover:underline"
+            >
               About
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link href="/blog" className="text-gray-600 dark:text-gray-300 hover:underline">
+            <Link
+              href="/blog"
+              className="text-gray-600 dark:text-gray-300 hover:underline"
+            >
               Blog
             </Link>
           </NavbarItem>
