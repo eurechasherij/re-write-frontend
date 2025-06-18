@@ -1,52 +1,53 @@
-# Vite & HeroUI Template
+# re-write ✍️
 
-This is a template for creating applications using Vite and HeroUI (v2).
+**Eurecha Sherij Anakimesta's Personal Developer Hub**
 
-[Try it on CodeSandbox](https://githubbox.com/frontio-ai/vite-template)
+Welcome to `re-write` — my digital garden, writing desk, and professional portfolio, all in one. This site blends Markdown-powered content, a Golang backend for dynamic metrics, and a React + HeroUI frontend styled to feel as polished as Medium.
 
-## Technologies Used
+## 🧱 Stack
 
-- [Vite](https://vitejs.dev/guide/)
-- [HeroUI](https://heroui.com)
-- [Tailwind CSS](https://tailwindcss.com)
-- [Tailwind Variants](https://tailwind-variants.org)
-- [TypeScript](https://www.typescriptlang.org)
-- [Framer Motion](https://www.framer.com/motion)
+| Layer     | Tech                          |
+|-----------|-------------------------------|
+| Frontend  | Vite + React + HeroUI         |
+| Styling   | Tailwind CSS v4               |
+| Markdown  | `react-markdown`, `remark-gfm`|
+| Syntax    | `prismjs`                     |
+| Backend   | Go + MongoDB (for metrics)    |
 
-## How to Use
+## 🧠 Features
 
-To clone the project, run the following command:
+- Blog posts written in Markdown with frontmatter parsing
+- Code blocks styled like Medium with PrismJS
+- Fully responsive layout using HeroUI components
+- Tech stack filter with live search
+- Contact buttons for quick connection
+- Custom theme via HeroUI
+- Optional extras like dark mode, cursor animation, and Konami code easter eggs
 
-```bash
-git clone https://github.com/frontio-ai/vite-template.git
-```
-
-### Install dependencies
-
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
-
-```bash
-npm install
-```
-
-### Run the development server
+## 🚀 Running Locally
 
 ```bash
-npm run dev
+bun install
+bun dev
 ```
 
-### Setup pnpm (optional)
+You’ll also need to run the Go backend separately if you’re tracking views/likes.
 
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
+## 📁 Content
 
-```bash
-public-hoist-pattern[]=*@heroui/*
-```
+All blog posts live in the src/posts/ directory using .md files with frontmatter:
 
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
+---
+title: Understanding React Hooks
+date: 2025-06-18
+readingTime: 2 min read
+excerpt: A primer on React Hooks and why they matter.
+---
 
-## License
+## 🔮 Coming Soon
+ - Interactive homepage hero section
+ - Metrics dashboard (views, likes)
+ - Editor mode for writing directly on-site
+ - AI-powered writing assistant (codename: E.L.I.A.S.)
 
-Licensed under the [MIT license](https://github.com/frontio-ai/vite-template/blob/main/LICENSE).
-# re-write-frontend
-# re-write-frontend
+Built by @eurechasherij

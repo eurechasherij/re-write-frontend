@@ -93,13 +93,16 @@ export default function AboutPage() {
         <Divider />
         <CardBody className="prose dark:prose-invert max-w-none text-sm sm:text-base">
           <p>
-            Systems-focused full stack developer with over five years of
-            hands-on experience. I thrive at the intersection of backend
-            architecture, modern web frontends, and scalable system design. My
-            journey has taken me from building robust Laravel backends to
-            crafting React and React Native apps, and even diving deep into
-            advanced Linux sysadmin work. I love solving complex problems and
-            making technology feel seamless for real users.
+            Hi, I’m Re — a systems-focused full stack developer with over five
+            years of hands-on experience. I thrive at the crossroads of backend
+            architecture, modern frontend development, and scalable system
+            design. From building robust Laravel APIs to crafting sleek UIs with
+            React and React Native, my work spans the full stack and beyond.
+            I’ve even gone deep into advanced Linux sysadmin tasks — I don’t
+            just debug the app — I trace the ripple back to the architecture.
+            Above all, I love turning complexity into simplicity — creating
+            technology that feels intuitive, reliable, and seamless for real
+            users.
           </p>
         </CardBody>
       </Card>
