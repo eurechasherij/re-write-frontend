@@ -1,69 +1,190 @@
-import ReactMarkdown from "react-markdown";
-import { Github, Linkedin, Mail, Phone } from "lucide-react";
-
-const aboutMe = `
-# About Me
-
-Hi, I’m Eurecha Sherij Anakimesta—a systems-focused full stack developer based in South Jakarta, Indonesia. With over five years of hands-on experience, I thrive at the intersection of backend architecture, modern web frontends, and scalable system design.
-
-My journey has taken me from building robust Laravel backends to crafting React and React Native apps, and even diving deep into advanced Linux sysadmin work. I love solving complex problems and making technology feel seamless for real users.
-
-## Notable Projects
-- **SIPP 2.0** and **SieKTA**: Personnel management and digital ID systems for the Indonesian National Police
-- **SiSDM Mobile**: Secure police access on the go
-- **Amdalnet**: Environmental permit system for KLHK
-
-## Tech I Use
-Laravel, React, Vue, Tailwind CSS, Kotlin, Java, Nginx, Git, CI/CD, RESTful API
-
-## Background
-- **Education**: Vocational in Computer Engineering, Bachelor’s in Informatics (paused)
-- **Languages**: Indonesian (native), English (professional)
-
-I believe in developer-first solutions, minimalist prose, and clean formatting. If you’re passionate about building things that last—or just want to talk shop—let’s connect.
-`;
-
-const contacts = [
-  {
-    href: "https://linkedin.com/in/eurechasherij",
-    label: "LinkedIn",
-    icon: <Linkedin className="w-5 h-5" />,
-  },
-  {
-    href: "https://github.com/eurechasherij",
-    label: "GitHub",
-    icon: <Github className="w-5 h-5" />,
-  },
-  {
-    href: "mailto:eurechasherij@gmail.com",
-    label: "Email",
-    icon: <Mail className="w-5 h-5" />,
-  },
-  {
-    href: "https://wa.me/6285121010940",
-    label: "WhatsApp",
-    icon: <Phone className="w-5 h-5" />,
-  },
-];
+import { GitHubIcon } from "@/components/icons/GitHubIcon";
+import { LinkedInIcon } from "@/components/icons/LinkedInIcon";
+import {
+  Avatar,
+  Button,
+  Card,
+  CardBody,
+  CardHeader,
+  Divider,
+  Input,
+} from "@heroui/react";
+import { Mail, Phone } from "lucide-react";
+import { useMemo, useState } from "react";
 
 export default function AboutPage() {
+  const backendTech = new Set(["Laravel", "Golang (Learning)"]);
+
+  const frontendTech = new Set(["React", "Vue", "Tailwind CSS"]);
+
+  const mobileTech = new Set(["React Native", "Kotlin", "Java"]);
+
+  const databaseTech = new Set(["PostgreSQL", "MongoDB"]);
+
+  const devOpsTech = new Set(["Nginx", "Git", "CI/CD"]);
+
+  const apiTech = new Set(["RESTful API"]);
+
+  const cloudPlatforms = new Set(["AWS", "Google Cloud", "DigitalOcean"]);
+
+  const otherTech = new Set(["And more..."]);
+
+  const [searchKeyword, setSearchKeyword] = useState("");
+
+  const filteredTech = useMemo(() => {
+    const allTech = [
+      ...backendTech,
+      ...frontendTech,
+      ...mobileTech,
+      ...databaseTech,
+      ...devOpsTech,
+      ...apiTech,
+      ...cloudPlatforms,
+      ...otherTech,
+    ];
+
+    // switch (searchKeyword.toLowerCase()) {
+    //   case "backend":
+    //     return Array.from(backendTech);
+    //   case "frontend":
+    //     return Array.from(frontendTech);
+    //   case "mobile":
+    //     return Array.from(mobileTech);
+    //   case "database":
+    //     return Array.from(databaseTech);
+    //   case "devops":
+    //     return Array.from(devOpsTech);
+    //   case "api":
+    //     return Array.from(apiTech);
+    //   case "cloud":
+    //     return Array.from(cloudPlatforms);
+    //   default:
+    //     break;
+    // }
+
+    if (!searchKeyword) return allTech;
+
+    return allTech.filter((tech) =>
+      tech.toLowerCase().includes(searchKeyword.toLowerCase())
+    );
+  }, [searchKeyword]);
+
   return (
-    <section className="container mx-auto max-w-2xl px-6 py-12 prose dark:prose-dark">
-      <ReactMarkdown>{aboutMe}</ReactMarkdown>
-      <div className="flex gap-4 mt-6">
-        {contacts.map((c) => (
-          <a
-            key={c.label}
-            href={c.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-200 transition"
-          >
-            {c.icon}
-            <span className="font-medium">{c.label}</span>
-          </a>
-        ))}
-      </div>
+    <section className="container mx-auto max-w-3xl px-6 pb-16 space-y-12">
+      {/* Profile */}
+      <Card radius="lg" shadow="md">
+        <CardHeader className="flex flex-col sm:flex-row sm:items-center sm:gap-5 gap-4 text-center sm:text-left">
+          <Avatar
+            src="/re.JPG"
+            alt="Eurecha Sherij Anakimesta"
+            size="lg"
+            radius="full"
+            className="mx-auto sm:mx-0"
+          />
+          <div>
+            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">
+              Eurecha Sherij Anakimesta
+            </h1>
+            <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">
+              Full Stack Developer • Based in South Jakarta
+            </p>
+          </div>
+        </CardHeader>
+        <Divider />
+        <CardBody className="prose dark:prose-invert max-w-none text-sm sm:text-base">
+          <p>
+            Systems-focused full stack developer with over five years of
+            hands-on experience. I thrive at the intersection of backend
+            architecture, modern web frontends, and scalable system design. My
+            journey has taken me from building robust Laravel backends to
+            crafting React and React Native apps, and even diving deep into
+            advanced Linux sysadmin work. I love solving complex problems and
+            making technology feel seamless for real users.
+          </p>
+        </CardBody>
+      </Card>
+
+      {/* Projects */}
+      <section>
+        <h2 className="text-xl font-semibold mb-4">🚀 Notable Projects</h2>
+        <ul className="space-y-4 list-disc pl-6 text-gray-800 dark:text-gray-200">
+          <li>
+            <strong>SIPP 2.0 & SieKTA</strong> — Personnel and digital ID
+            systems for the Indonesian National Police.
+          </li>
+          <li>
+            <strong>SiSDM Mobile</strong> — Secure mobile access to personnel
+            data for the Indonesian National Police.
+          </li>
+          <li>
+            <strong>Amdalnet</strong> — Environmental permit system for KLHK.
+          </li>
+        </ul>
+      </section>
+
+      {/* Tech Stack */}
+      <section>
+        <h2 className="text-xl font-semibold mb-4">🧰 Tech & Tools</h2>
+        <Input
+          variant="bordered"
+          placeholder="Search technologies..."
+          className="max-w-xs mb-4"
+          value={searchKeyword}
+          onValueChange={setSearchKeyword}
+        />
+        <div className="flex flex-wrap gap-3">
+          {filteredTech.map((tech) => (
+            <span
+              key={tech}
+              className="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full text-sm text-gray-800 dark:text-gray-200"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section>
+        <h2 className="text-xl font-semibold mb-4">📬 Connect With Me</h2>
+        <div className="flex flex-wrap gap-3">
+          {[
+            {
+              href: "https://linkedin.com/in/eurechasherij",
+              icon: <LinkedInIcon size={18} />,
+              label: "LinkedIn",
+            },
+            {
+              href: "https://github.com/eurechasherij",
+              icon: <GitHubIcon size={18} />,
+              label: "GitHub",
+            },
+            {
+              href: "mailto:eurechasherij@gmail.com",
+              icon: <Mail size={18} />,
+              label: "Email",
+            },
+            {
+              href: "https://wa.me/6285121010940",
+              icon: <Phone size={18} />,
+              label: "WhatsApp",
+            },
+          ].map(({ href, icon, label }) => (
+            <Button
+              as="a"
+              key={label}
+              href={href}
+              variant="bordered"
+              size="sm"
+              startContent={icon}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {label}
+            </Button>
+          ))}
+        </div>
+      </section>
     </section>
   );
 }
