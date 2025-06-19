@@ -29,7 +29,7 @@ export default function DefaultLayout({
         <NavbarBrand className="text-2xl font-bold text-gray-900 dark:text-white">
           <Link
             href="/"
-            className="text-2xl text-gray-900 dark:text-white hover:underline"
+            className="text-2xl font-(family-name:--font-handwritten) text-gray-900 dark:text-white hover:underline"
           >
             re-write
           </Link>

@@ -1,8 +1,13 @@
-@import 'tailwindcss';
+@import url("https://fonts.googleapis.com/css2?family=Caveat&display=swap");
+@import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @plugin '../hero.ts';
 @source '../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
 @custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-handwritten: "Caveat", cursive;
+}
 
 /* Extend prose styles */
 @layer components {
@@ -42,7 +47,8 @@
       margin-bottom: 1.25rem;
     }
 
-    ul, ol {
+    ul,
+    ol {
       padding-left: 1.5rem;
       margin-top: 1rem;
       margin-bottom: 1.5rem;
@@ -88,12 +94,19 @@
       border-radius: 0.5rem;
       margin: 1.5rem 0;
     }
+
+    code::before,
+    code::after {
+      content: none !important;
+    }
   }
 
   .dark .prose {
     color: theme("colors.gray.100");
 
-    h1, h2, h3 {
+    h1,
+    h2,
+    h3 {
       color: theme("colors.white");
     }
 
@@ -114,6 +127,11 @@
     pre {
       background-color: #1e293b;
       color: #f1f5f9;
+    }
+
+    code::before,
+    code::after {
+      content: none !important;
     }
   }
 }

@@ -1,7 +1,8 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-import { CodeBlock } from "./CodeBlock";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { duotoneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 interface MarkdownRendererProps {
   content: string;
@@ -16,21 +17,23 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           pre({ children }) {
             return <>{children}</>; // unwrap <pre>
           },
-          code({
-            inline,
-            className,
-            children,
-          }: React.ComponentProps<"code"> & { inline?: boolean }) {
-            if (inline) {
-              return (
-                <code className="bg-zinc-800 px-1 rounded">{children}</code>
-              );
-            }
-
-            return (
-              <CodeBlock className={className}>
-                {String(children).trim()}
-              </CodeBlock>
+          code(props) {
+            const { children, className, node, ...rest } = props;
+            const match = /language-(\w+)/.exec(className || "");
+            return match ? (
+              <SyntaxHighlighter
+                {...rest}
+                PreTag="div"
+                className="rounded-lg"
+                language={match[1]}
+                style={duotoneDark}
+              >
+                {String(children).replace(/\n$/, "")}
+              </SyntaxHighlighter>
+            ) : (
+              <code className="text-red-400">
+                {children}
+              </code>
             );
           },
         }}
