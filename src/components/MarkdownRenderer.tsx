@@ -3,6 +3,7 @@ import remarkGfm from "remark-gfm";
 
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { duotoneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import type { SyntaxHighlighterProps } from "react-syntax-highlighter";
 
 interface MarkdownRendererProps {
   content: string;
@@ -19,10 +20,11 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           },
           code(props) {
             const { children, className, node, ...rest } = props;
+            const syntaxProps = rest as SyntaxHighlighterProps;
             const match = /language-(\w+)/.exec(className || "");
             return match ? (
               <SyntaxHighlighter
-                {...rest}
+                {...syntaxProps}
                 PreTag="div"
                 className="rounded-lg"
                 language={match[1]}
