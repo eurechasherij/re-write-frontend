@@ -13,21 +13,31 @@ import { Mail, Phone } from "lucide-react";
 import { useMemo, useState } from "react";
 
 export default function AboutPage() {
-  const backendTech = new Set(["Laravel", "Golang (Learning)"]);
-
-  const frontendTech = new Set(["React", "Vue", "Tailwind CSS"]);
-
+  const backendTech = new Set(["Laravel", "Golang (Learning)", "PHP"]);
+  const frontendTech = new Set(["React", "Vue.js", "Tailwind CSS", "HeroUI"]);
   const mobileTech = new Set(["React Native", "Kotlin", "Java"]);
-
-  const databaseTech = new Set(["PostgreSQL", "MongoDB"]);
-
-  const devOpsTech = new Set(["Nginx", "Git", "CI/CD"]);
-
-  const apiTech = new Set(["RESTful API"]);
-
+  const databaseTech = new Set(["PostgreSQL", "MySQL", "MariaDB", "MongoDB"]);
+  const devOpsTech = new Set([
+    "Linux",
+    "Nginx",
+    "Apache",
+    "HAProxy",
+    "CI/CD",
+    "Git",
+  ]);
+  const apiTech = new Set(["RESTful APIs"]);
   const cloudPlatforms = new Set(["AWS", "Google Cloud", "DigitalOcean"]);
-
-  const otherTech = new Set(["And more..."]);
+  const tooling = new Set([
+    "Zustand",
+    "SWR",
+    "Virtuoso",
+    "ESLint",
+    "Prettier",
+    "Husky",
+    "Vite",
+  ]);
+  const aiTools = new Set(["GitHub Copilot", "ChatGPT", "Cursor"]);
+  const otherTech = new Set(["Spatie Permissions", "Sparx Systems"]);
 
   const [searchKeyword, setSearchKeyword] = useState("");
 
@@ -40,30 +50,11 @@ export default function AboutPage() {
       ...devOpsTech,
       ...apiTech,
       ...cloudPlatforms,
+      ...tooling,
+      ...aiTools,
       ...otherTech,
     ];
-
-    // switch (searchKeyword.toLowerCase()) {
-    //   case "backend":
-    //     return Array.from(backendTech);
-    //   case "frontend":
-    //     return Array.from(frontendTech);
-    //   case "mobile":
-    //     return Array.from(mobileTech);
-    //   case "database":
-    //     return Array.from(databaseTech);
-    //   case "devops":
-    //     return Array.from(devOpsTech);
-    //   case "api":
-    //     return Array.from(apiTech);
-    //   case "cloud":
-    //     return Array.from(cloudPlatforms);
-    //   default:
-    //     break;
-    // }
-
     if (!searchKeyword) return allTech;
-
     return allTech.filter((tech) =>
       tech.toLowerCase().includes(searchKeyword.toLowerCase())
     );
@@ -86,23 +77,20 @@ export default function AboutPage() {
               Eurecha Sherij Anakimesta
             </h1>
             <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">
-              Full Stack Developer • Based in South Jakarta
+              Full Stack Engineer (Laravel + React) • Based in South Jakarta
             </p>
           </div>
         </CardHeader>
         <Divider />
         <CardBody className="prose dark:prose-invert max-w-none text-sm sm:text-base">
           <p>
-            Hi, I’m Re — a systems-focused full stack developer with over five
-            years of hands-on experience. I thrive at the crossroads of backend
-            architecture, modern frontend development, and scalable system
-            design. From building robust Laravel APIs to crafting sleek UIs with
-            React and React Native, my work spans the full stack and beyond.
-            I’ve even gone deep into advanced Linux sysadmin tasks — I don’t
-            just debug the app — I trace the ripple back to the architecture.
-            Above all, I love turning complexity into simplicity — creating
-            technology that feels intuitive, reliable, and seamless for real
-            users.
+            Systems-minded full stack engineer with 5+ years of experience
+            delivering scalable, maintainable applications using Laravel, React,
+            and modern toolchains. Known for clean architecture,
+            performance-first design, and proactive team enablement. Experienced
+            in backend API design, frontend UX, and Linux-based DevOps. I think
+            in systems, move fast without breaking fundamentals, and build
+            software like I’ll be the one maintaining it — because I often am.
           </p>
         </CardBody>
       </Card>
@@ -112,15 +100,25 @@ export default function AboutPage() {
         <h2 className="text-xl font-semibold mb-4">🚀 Notable Projects</h2>
         <ul className="space-y-4 list-disc pl-6 text-gray-800 dark:text-gray-200">
           <li>
-            <strong>SIPP 2.0 & SieKTA</strong> — Personnel and digital ID
-            systems for the Indonesian National Police.
+            <strong>SIPP 2.0, SieKTA, and SISMUTJAB</strong> — Personnel,
+            digital ID, and job rotation systems for the Indonesian National
+            Police.
           </li>
           <li>
-            <strong>SiSDM Mobile</strong> — Secure mobile access to personnel
-            data for the Indonesian National Police.
+            <strong>SiSDM Mobile</strong> — Secure React Native app for
+            accessing personnel data in the field.
           </li>
           <li>
-            <strong>Amdalnet</strong> — Environmental permit system for KLHK.
+            <strong>Amdalnet</strong> — Environmental permit system for KLHK
+            using Laravel Echo and Vue.js.
+          </li>
+          <li>
+            <strong>e-KIAT Guru</strong> — Teacher accountability system for
+            Kemendikbud built with Laravel + Kotlin.
+          </li>
+          <li>
+            <strong>FIF Enterprise Architecture</strong> — Modernized internal
+            systems using Sparx EA tools.
           </li>
         </ul>
       </section>
@@ -187,6 +185,26 @@ export default function AboutPage() {
             </Button>
           ))}
         </div>
+      </section>
+
+      {/* Resume */}
+      <section>
+        <h2 className="text-xl font-semibold mb-4">📄 Resume</h2>
+        <p className="text-gray-500 dark:text-gray-400 text-sm">
+          Download my resume for a detailed overview of my experience and
+          skills.
+        </p>
+        <Button
+          as="a"
+          href="/resume.pdf"
+          variant="solid"
+          color="primary"
+          className="mt-2"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Download Resume
+        </Button>
       </section>
     </section>
   );
