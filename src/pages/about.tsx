@@ -84,13 +84,16 @@ export default function AboutPage() {
         <Divider />
         <CardBody className="prose dark:prose-invert max-w-none text-sm sm:text-base">
           <p>
-            Systems-minded full stack engineer with 5+ years of experience
-            delivering scalable, maintainable applications using Laravel, React,
-            and modern toolchains. Known for clean architecture,
-            performance-first design, and proactive team enablement. Experienced
-            in backend API design, frontend UX, and Linux-based DevOps. I think
-            in systems, move fast without breaking fundamentals, and build
-            software like I’ll be the one maintaining it — because I often am.
+            Systems-minded Full Stack Engineer with 5+ years delivering
+            scalable, maintainable applications using Laravel, React, and modern
+            toolchains. Known for clean architecture, performance-first design,
+            and proactive team enablement. Skilled at translating business goals
+            into robust architecture and performant code. Experienced in backend
+            API design, frontend UX polish, and Linux-based DevOps. I think in
+            systems, move fast without breaking fundamentals, and build software
+            like I’ll be the one maintaining it—because I often am. Seeking a
+            role that values autonomy, technical ownership, and meaningful
+            impact.
           </p>
         </CardBody>
       </Card>
