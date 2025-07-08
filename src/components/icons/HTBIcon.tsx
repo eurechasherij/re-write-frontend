@@ -3,7 +3,7 @@ import { IconSvgProps } from "@/types";
 export function HTBIcon({ size = 24, ...props }: IconSvgProps) {
   return (
     <svg
-      fill="#000000"
+      fill="currentColor"
       width={size}
       height={size}
       viewBox="0 0 24 24"
