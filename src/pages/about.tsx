@@ -36,18 +36,43 @@ export default function AboutPage() {
     "Prettier",
     "Husky",
     "Vite",
+    "Zod",
+    "React Hook Form",
+    "Spatie Permissions",
   ]);
   const securityTools = new Set([
-    "Hack The Box (ludicr0us)",
-    "WAF",
-    "Rate Limiting",
-    "IP Banning",
-    "JWT Security",
-    "Encryption (at rest/in transit)",
+    "ModSecurity",
+    "fail2ban",
+    "CrowdSec",
+    "Cloudflare",
+    "iptables",
+    "ufw",
+
+    // Vulnerability Scanning / Analysis
+    "Nikto",
+    "OWASP ZAP",
+    "Burp Suite",
+    "sqlmap",
+
+    // Network / Recon
+    "nmap",
+    "netcat",
+    "tcpdump",
+
+    // CTF / Exploit Help
+    "Ghidra",
+    "Radare2",
+
+    // Red Teaming Extras
+    "Metasploit",
+    "msfvenom",
+    "Enum4linux",
+    "LinPEAS",
+    "WinPEAS",
   ]);
 
   const aiTools = new Set(["GitHub Copilot", "ChatGPT", "Cursor"]);
-  const otherTech = new Set(["Spatie Permissions", "Sparx Systems"]);
+  const otherTech = new Set(["Sparx Systems"]);
 
   const [searchKeyword, setSearchKeyword] = useState("");
 
