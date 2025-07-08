@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom";
 
 import IndexPage from "@/pages/index";
-import BlogPage from "@/pages/blog";
 import AboutPage from "@/pages/about";
 import PostPage from "@/pages/post";
 import DefaultLayout from "./layouts/DefaultLayout";
+import BlogPage from "./pages/blog";
 
 function App() {
   return (
