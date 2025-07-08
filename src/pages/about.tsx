@@ -1,4 +1,5 @@
 import { GitHubIcon } from "@/components/icons/GitHubIcon";
+import { HTBIcon } from "@/components/icons/HTBIcon";
 import { LinkedInIcon } from "@/components/icons/LinkedInIcon";
 import {
   Avatar,
@@ -9,7 +10,7 @@ import {
   Divider,
   Input,
 } from "@heroui/react";
-import { Mail, Phone } from "lucide-react";
+import { MailIcon, PhoneIcon } from "lucide-react";
 import { useMemo, useState } from "react";
 
 export default function AboutPage() {
@@ -36,6 +37,15 @@ export default function AboutPage() {
     "Husky",
     "Vite",
   ]);
+  const securityTools = new Set([
+    "Hack The Box (ludicr0us)",
+    "WAF",
+    "Rate Limiting",
+    "IP Banning",
+    "JWT Security",
+    "Encryption (at rest/in transit)",
+  ]);
+
   const aiTools = new Set(["GitHub Copilot", "ChatGPT", "Cursor"]);
   const otherTech = new Set(["Spatie Permissions", "Sparx Systems"]);
 
@@ -51,6 +61,7 @@ export default function AboutPage() {
       ...apiTech,
       ...cloudPlatforms,
       ...tooling,
+      ...securityTools,
       ...aiTools,
       ...otherTech,
     ];
@@ -85,15 +96,14 @@ export default function AboutPage() {
         <CardBody className="prose dark:prose-invert max-w-none text-sm sm:text-base">
           <p>
             Systems-minded Full Stack Engineer with 5+ years delivering
-            scalable, maintainable applications using Laravel, React, and modern
-            toolchains. Known for clean architecture, performance-first design,
-            and proactive team enablement. Skilled at translating business goals
-            into robust architecture and performant code. Experienced in backend
-            API design, frontend UX polish, and Linux-based DevOps. I think in
-            systems, move fast without breaking fundamentals, and build software
-            like I’ll be the one maintaining it—because I often am. Seeking a
-            role that values autonomy, technical ownership, and meaningful
-            impact.
+            scalable, secure, and maintainable applications using Laravel,
+            React, and Linux-first architectures. I specialize in backend API
+            design, frontend UX polish, infrastructure hardening, and DevOps
+            workflows. Known for clean architecture, fast iterations without
+            compromising fundamentals, and security-aware engineering —
+            including hands-on experience with threat mitigation, CI/CD
+            security, and Hack The Box (HTB) red teaming. I build systems like
+            I’ll be the one maintaining them — because I often am.
           </p>
         </CardBody>
       </Card>
@@ -103,25 +113,57 @@ export default function AboutPage() {
         <h2 className="text-xl font-semibold mb-4">🚀 Notable Projects</h2>
         <ul className="space-y-4 list-disc pl-6 text-gray-800 dark:text-gray-200">
           <li>
-            <strong>SIPP 2.0, SieKTA, and SISMUTJAB</strong> — Personnel,
-            digital ID, and job rotation systems for the Indonesian National
-            Police.
+            <strong>SIPP 2.0, SieKTA, SISMUTJAB</strong> — Personnel, digital
+            ID, and job rotation systems for the Indonesian National Police,
+            deployed on hardened Linux infrastructure.
           </li>
           <li>
-            <strong>SiSDM Mobile</strong> — Secure React Native app for
-            accessing personnel data in the field.
+            <strong>SiSDM Mobile</strong> — Secure React Native field-access app
+            for police personnel, published to App Store & Play Store with
+            regulatory compliance.
           </li>
           <li>
-            <strong>Amdalnet</strong> — Environmental permit system for KLHK
-            using Laravel Echo and Vue.js.
+            <strong>Amdalnet</strong> — Real-time environmental permit system
+            for KLHK built with Laravel Echo and Vue.js, improving
+            national-level coordination.
           </li>
           <li>
-            <strong>e-KIAT Guru</strong> — Teacher accountability system for
-            Kemendikbud built with Laravel + Kotlin.
+            <strong>e-KIAT Guru</strong> — Laravel + Kotlin-based accountability
+            platform improving transparency for teacher in remote areas.
           </li>
           <li>
-            <strong>FIF Enterprise Architecture</strong> — Modernized internal
-            systems using Sparx EA tools.
+            <strong>FIF Enterprise Architecture</strong> — System diagramming
+            and integration flow design using Sparx Systems to support scalable
+            backend infrastructure.
+          </li>
+        </ul>
+      </section>
+
+      {/* Security */}
+      <section>
+        <h2 className="text-xl font-semibold mb-4">
+          🔐 Security & Red Teaming
+        </h2>
+        <ul className="space-y-3 list-disc pl-6 text-gray-800 dark:text-gray-200 text-sm sm:text-base">
+          <li>
+            Rooted 25+ machines on{" "}
+            <a
+              href="https://app.hackthebox.com/users/ludicr0us"
+              className="text-primary underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Hack The Box (ludicr0us)
+            </a>
+            , including Linux, web, and privilege escalation boxes.
+          </li>
+          <li>
+            Familiar with privilege escalation, SSRF, XSS, SQLi, JWT attacks,
+            and insecure deserialization.
+          </li>
+          <li>
+            Experience analyzing real-world misconfigurations and applying
+            insights to harden production systems.
           </li>
         </ul>
       </section>
@@ -165,13 +207,18 @@ export default function AboutPage() {
             },
             {
               href: "mailto:eurechasherij@gmail.com",
-              icon: <Mail size={18} />,
+              icon: <MailIcon size={18} />,
               label: "Email",
             },
             {
               href: "https://wa.me/6285121010940",
-              icon: <Phone size={18} />,
+              icon: <PhoneIcon size={18} />,
               label: "WhatsApp",
+            },
+            {
+              href: "https://app.hackthebox.com/users/ludicr0us",
+              icon: <HTBIcon size={18} />,
+              label: "Hack The Box",
             },
           ].map(({ href, icon, label }) => (
             <Button
