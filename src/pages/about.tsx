@@ -71,7 +71,7 @@ export default function AboutPage() {
     "WinPEAS",
   ]);
 
-  const aiTools = new Set(["GitHub Copilot", "ChatGPT", "Cursor"]);
+  const aiTools = new Set(["GitHub Copilot", "ChatGPT", "Cursor", "Ollama"]);
   const otherTech = new Set(["Sparx Systems"]);
 
   const [searchKeyword, setSearchKeyword] = useState("");
